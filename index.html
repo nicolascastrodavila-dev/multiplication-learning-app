@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laboratorio de Multiplicación</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="app-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Laboratorio de Multiplicación</p>
+          <h1 id="app-title">Practica, descubre patrones y gana velocidad.</h1>
+          <p class="intro">
+            Ejercicios cortos, una tabla interactiva y progreso guardado en este dispositivo.
+          </p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="array-card">
+            <div class="array-title">6 x 7</div>
+            <div class="dot-array" id="hero-array"></div>
+            <div class="array-answer">42</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Área de práctica">
+        <aside class="panel settings-panel">
+          <div class="panel-heading">
+            <h2>Configuración</h2>
+            <button class="icon-button" id="reset-progress" type="button" title="Reiniciar progreso" aria-label="Reiniciar progreso">
+              R
+            </button>
+          </div>
+
+          <div class="control-group">
+            <label for="mode">Modo</label>
+            <select id="mode">
+              <option value="adaptive">Repaso adaptativo</option>
+              <option value="random">Ejercicios aleatorios</option>
+              <option value="focus">Factor específico</option>
+            </select>
+          </div>
+
+          <div class="control-group" id="focus-wrap">
+            <label for="focus-factor">Factor específico</label>
+            <input id="focus-factor" type="number" min="1" max="12" value="6">
+          </div>
+
+          <div class="control-group">
+            <label for="session-length">Preguntas</label>
+            <input id="session-length" type="number" min="5" max="50" step="5" value="10">
+          </div>
+
+          <div class="toggle-row">
+            <input id="timer-enabled" type="checkbox" checked>
+            <label for="timer-enabled">Mostrar cronómetro</label>
+          </div>
+
+          <fieldset class="factor-picker">
+            <legend>Factores</legend>
+            <div id="factor-buttons" class="factor-buttons"></div>
+          </fieldset>
+
+          <button class="primary-button" id="start-session" type="button">Comenzar sesión</button>
+        </aside>
+
+        <section class="practice-panel" aria-labelledby="practice-title">
+          <div class="practice-topline">
+            <div>
+              <p class="eyebrow">Pregunta actual</p>
+              <h2 id="practice-title">Listo cuando tú quieras</h2>
+            </div>
+            <div class="session-stats" aria-label="Estadísticas de la sesión">
+              <div>
+                <span id="answered-count">0</span>
+                <small>respondidas</small>
+              </div>
+              <div>
+                <span id="accuracy">0%</span>
+                <small>precisión</small>
+              </div>
+              <div>
+                <span id="timer">0:00</span>
+                <small>tiempo</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-expression" id="problem-expression">- x -</div>
+            <form id="answer-form" class="answer-form">
+              <label class="sr-only" for="answer-input">Respuesta</label>
+              <input id="answer-input" type="number" inputmode="numeric" autocomplete="off" placeholder="Respuesta">
+              <button class="primary-button" type="submit">Revisar</button>
+            </form>
+            <p class="feedback" id="feedback" aria-live="polite">Elige la configuración y comienza una sesión.</p>
+          </div>
+
+          <div class="practice-actions">
+            <button id="skip-question" type="button">Saltar</button>
+            <button id="reveal-answer" type="button">Mostrar respuesta</button>
+            <button id="end-session" type="button" disabled>Cerrar sesion</button>
+          </div>
+
+          <section class="session-summary" id="session-summary" hidden aria-live="polite">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Resumen de sesion</p>
+                <h2 id="summary-title">Buen trabajo</h2>
+              </div>
+              <span id="summary-time">0:00</span>
+            </div>
+            <div class="summary-grid" id="summary-grid"></div>
+            <div class="suggestions" id="suggestions"></div>
+          </section>
+        </section>
+      </section>
+
+      <section class="insights" aria-label="Progreso y tabla">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Progreso</h2>
+            <span id="mastery-label">Sin datos todavía</span>
+          </div>
+          <div class="meter" aria-label="Dominio general">
+            <span id="mastery-meter"></span>
+          </div>
+          <div class="progress-list" id="progress-list"></div>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="panel-heading">
+            <h2>Tabla de Multiplicar</h2>
+            <span>1-12</span>
+          </div>
+          <div class="times-table" id="times-table" aria-label="Tabla de multiplicar"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
